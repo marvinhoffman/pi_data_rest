@@ -12,10 +12,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'thisisasecretkey'
 api = Api(app)
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
 jwt = JWT(app, authenticate, identity) # /auth (a new endpoint)
 
 # Resources
@@ -24,6 +20,6 @@ api.add_resource(SoilMoisture, '/soildata')
 api.add_resource(SoilMoistureData, '/soildataqry')
 
 if __name__ == '__main__':
-    from db import db # prevent infinte loop
+    from db import db # prevent infinte loop, "circular imports"
     db.init_app(app)
     app.run(port=5080, debug=True)
