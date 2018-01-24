@@ -34,5 +34,6 @@ class SoilMoisture(Resource):
 
 
 class SoilMoistureData(Resource):
+    @jwt_required()
     def get(self):
         return {'Soil Data': [soildata.json() for soildata in SoilMoistureModel.query.all()]}
