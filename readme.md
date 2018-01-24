@@ -5,6 +5,6 @@
 ### Installation
 Written in Python/Flask.
 
-requirements.txt will provide required libraries for use in locally.
+requirements.txt will provide required libraries for use on Heroku.
 
-requirements_Heroku.txt will provide required libraries for use on Heroku.
+requirements_local.txt will provide required libraries for use locally.
