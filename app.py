@@ -6,7 +6,7 @@ from flask_jwt import JWT
 
 from security import authenticate, identity
 from resources.user import UserRegister
-from resources.soil_moisture import SoilMoisture, SoilMoistureData
+from resources.soil_moisture import SoilMoisture, SoilMoistureData, SoilMoistureDataRemoval
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///pi_data.db')
@@ -20,6 +20,7 @@ jwt = JWT(app, authenticate, identity) # /auth (a new endpoint)
 api.add_resource(UserRegister, '/register')
 api.add_resource(SoilMoisture, '/soildata')
 api.add_resource(SoilMoistureData, '/soildataqry')
+api.add_resource(SoilMoistureDataRemoval, '/soildatarmv')
 
 if __name__ == '__main__':
     from db import db # prevent infinte loop, "circular imports"

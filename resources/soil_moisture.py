@@ -37,3 +37,10 @@ class SoilMoistureData(Resource):
     @jwt_required()
     def get(self):
         return {'Soil Data': [soildata.json() for soildata in SoilMoistureModel.query.all()]}
+
+
+class SoilMoistureDataRemoval(Resource):
+    @jwt_required()
+    def get(self):
+        [soildata.remove_data() for soildata in SoilMoistureModel.query.all()]
+        return {"message": "All soil data has been removed."}

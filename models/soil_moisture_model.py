@@ -21,3 +21,8 @@ class SoilMoistureModel(db.Model):
     def save_data(self):
         db.session.add(self)
         db.session.commit()
+
+
+    def remove_data(self):
+        db.session.delete(self)
+        db.session.commit()
