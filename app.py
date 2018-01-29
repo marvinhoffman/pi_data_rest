@@ -9,6 +9,7 @@ from resources.user import UserRegister
 from resources.soil_moisture import SoilMoisture, SoilMoistureData, SoilMoistureDataRemoval
 
 app = Flask(__name__)
+app.config['PROPAGATE_EXCEPTIONS'] = True # ensure that remote servers properly raise exceptions.
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///pi_data.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.secret_key = 'thisisasecretkey'
